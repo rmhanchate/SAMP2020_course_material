@@ -20,7 +20,7 @@ def get_MFCC(sampling_rate,audio):
     features = preprocessing.scale(features)
     return features
 
-for gen in ['/male', '/female']:
+for gen in ['/female', '/male']:
     files = []
     # r=root, d=directories, f = files
     for r, d, f in os.walk(args.train+gen):
@@ -40,8 +40,7 @@ for gen in ['/male', '/female']:
         else:
             features = np.vstack((features, vector))
 
-    gmm = GMM(n_components = 8, max_iter = 200, covariance_type='diag',
-            n_init = 3)
+    gmm = GMM(n_components = 8, max_iter = 200, covariance_type='diag',n_init = 3)
     gmm.fit(features)
 
     picklefile = f.split("/")[-2].split(".wav")[0]+".gmm"

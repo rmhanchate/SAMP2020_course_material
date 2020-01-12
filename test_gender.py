@@ -25,14 +25,9 @@ def get_MFCC(sampling_rate,audio):
                 feat = temp
             else:
                 feat = np.vstack((feat, temp))
-    features = feat;
+    features = feat
     features = preprocessing.scale(features)
     return features
-
-# #path to test data
-# args.test = "D:\\pygender\\test_data\\AudioSet\\female_clips\\"
-# #path to saved models
-# args.model  = "D:\\pygender\\"
 
 gmm_files = [os.path.join(args.model,fname) for fname in os.listdir(args.model) if fname.endswith('.gmm')]
 models    = [pickle.load(open(fname,'rb')) for fname in gmm_files]
