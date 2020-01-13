@@ -20,10 +20,10 @@ def get_MFCC(sampling_rate,audio):
     features = preprocessing.scale(features)
     return features
 
-for gen in ['/female', '/male']:
+for gen in ['female', 'male']:
     files = []
     # r=root, d=directories, f = files
-    for r, d, f in os.walk(args.train+gen):
+    for r, d, f in os.walk(os.path.join(args.train,gen)):
         for file in f:
             if '.wav' in file:
                 files.append(os.path.join(r, file))
@@ -43,6 +43,6 @@ for gen in ['/female', '/male']:
     gmm = GMM(n_components = 8, max_iter = 200, covariance_type='diag',n_init = 3)
     gmm.fit(features)
 
-    picklefile = f.split("/")[-2].split(".wav")[0]+".gmm"
+    picklefile = gen+".gmm"
     pickle.dump(gmm,open(os.path.join(args.model ,picklefile),'wb'))
     print('modeling completed for gender:',picklefile)
