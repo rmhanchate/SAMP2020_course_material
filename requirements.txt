@@ -4,5 +4,10 @@ matplotlib
 scipy
 math
 operator
+scikit-learn
+pickle
+argparse
+librosa
+python_speech_features
 #
 
