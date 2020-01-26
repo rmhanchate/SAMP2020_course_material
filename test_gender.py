@@ -2,8 +2,8 @@ import os
 import pickle
 import numpy as np
 from scipy.io.wavfile import read
-import python_speech_features as mfcc
 from sklearn import preprocessing
+import librosa
 import argparse
 import warnings
 warnings.filterwarnings("ignore")
@@ -14,7 +14,8 @@ parser.add_argument("--model", help="Path to saved model")
 args = parser.parse_args()
 
 def get_MFCC(sampling_rate,audio):
-    features = mfcc.mfcc(audio,sampling_rate, 0.025, 0.01, 13,appendEnergy = False)
+    features = librosa.feature.mfcc(audio,sampling_rate, win_length = int(0.025*sampling_rate), hop_length = int(0.01*sampling_rate), n_mfcc = 13, htk=True)
+    features = np.transpose(features)
     feat     = np.asarray(())
     for i in range(features.shape[0]):
         temp = features[i,:]
@@ -48,7 +49,7 @@ for j, gen in enumerate(['female', 'male']):
     for f in files[j]:
         # print(f.split("/")[-1])
         sampling_rate, audio  = read(f)
-        features   = get_MFCC(sampling_rate,audio)
+        features   = get_MFCC(sampling_rate,audio.astype(float))
         scores     = None
         log_likelihood = np.zeros(len(models))
         for i in range(len(models)):

@@ -4,10 +4,12 @@ import pickle
 import numpy as np
 from scipy.io.wavfile import read
 from sklearn.mixture import GaussianMixture as GMM
-import python_speech_features as mfcc
 from sklearn import preprocessing
+import librosa
 import warnings
 import argparse
+
+
 warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description="Predict gender from voice")
@@ -16,7 +18,8 @@ parser.add_argument("--model", help="Path to save trained model")
 args = parser.parse_args()
 
 def get_MFCC(sampling_rate,audio):
-    features = mfcc.mfcc(audio,sampling_rate, 0.025, 0.01, 13,appendEnergy = False)
+    features = librosa.feature.mfcc(audio,sampling_rate, win_length = int(0.025*sampling_rate), hop_length = int(0.01*sampling_rate), n_mfcc = 13, htk=True)
+    features = np.transpose(features)
     features = preprocessing.scale(features)
     return features
 
@@ -34,7 +37,7 @@ for gen in ['female', 'male']:
 
     for f in files:
         sampling_rate,audio = read(f)
-        vector   = get_MFCC(sampling_rate,audio)
+        vector   = get_MFCC(sampling_rate,audio.astype(float))
         if features.size == 0:
             features = vector
         else:
