@@ -21,7 +21,7 @@ Link for Instructions to download Anaconda : https://docs.anaconda.com/anaconda/
 **Install missing packages:**<br/>
 Anaconda comes with many packages installed. Along with the default packages, we additionally need 2 more packages<br/>
 Run:
-1. conda install -c conda-forge librosa (To install Librosa)
+1. pip install librosa (To install Librosa)
 2. conda install -c anaconda scikit-learn (To install Scikit Learn)
 
 ### Verify packages
