@@ -3,7 +3,7 @@ Speech Processing Workshop for ECE Dept
 
 ## Installation
 
-The codes in this Repository are run usding Python(version 3.x)<br/>
+The codes in this Repository are run using Python(version 3.x)<br/>
 The libraries used for the installation are given in the requirements.txt file
 
 ### Linux Users
