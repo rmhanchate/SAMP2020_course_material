@@ -10,7 +10,7 @@ The libraries used for the installation are given in the requirements.txt file
 For Linux based Operating systems
 
 ### Windows Users
-For Windows suers, we recommend the use of Anaconda.<br/>
+For Windows users, we recommend the use of Anaconda.<br/>
 Link for Instructions to download Anaconda : https://docs.anaconda.com/anaconda/install/windows/
 
 **Verify the Anaconda installation:**<br/>
