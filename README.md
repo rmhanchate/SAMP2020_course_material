@@ -12,7 +12,7 @@ Open up a terminal and run
 ```
 pip3 install -r requirements.txt
 ```
-This should create and activate a virtual environment called venv
+This will install all libraries into your active python environment
 
 ### Windows Users
 For Windows users, we recommend the use of Anaconda.<br/>
