@@ -8,8 +8,10 @@ The libraries used for the installation are given in the requirements.txt file
 
 ### Linux Users
 For Linux based Operating systems you can use the makefile provided  
-Open up a terminal and run
-```make venv```  
+Open up a terminal and run  
+```
+pip3 install -r requirements.txt
+```
 This should create and activate a virtual environment called venv
 
 ### Windows Users
