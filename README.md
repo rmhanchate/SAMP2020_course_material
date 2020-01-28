@@ -7,7 +7,10 @@ The codes in this Repository are run using Python(version 3.x)<br/>
 The libraries used for the installation are given in the requirements.txt file
 
 ### Linux Users
-For Linux based Operating systems
+For Linux based Operating systems you can use the makefile provided  
+Open up a terminal and run
+```make venv```  
+This should create and activate a virtual environment called venv
 
 ### Windows Users
 For Windows users, we recommend the use of Anaconda.<br/>
